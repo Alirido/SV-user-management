@@ -1,16 +1,20 @@
 package main
 
 import (
-	"net/http"
 	"github.com/gin-gonic/gin"
+	"github.com/Alirido/SV-user-management/models"
+	"github.com/Alirido/SV-user-management/controllers"
 )
 
 func main() {
 	route := gin.Default()
 
-	route.GET("/", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"data": "Hello world!"})
-	})
+	models.ConnectDatabase()
+
+	route.GET("/users", controllers.GetUsers)
+	route.GET("/users/:id", controllers.GetUser)
+	route.POST("/users", controllers.CreateUser)
+	route.PATCH("/users/:id", controllers.UpdateUser)
 
 	route.Run()
 }
