@@ -3,7 +3,7 @@ package controllers
 import (
 	"net/http"
 	"fmt"
-	"log"
+	// "log"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
